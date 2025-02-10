@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,8 +20,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="font-display text-white text-2xl font-bold tracking-tight">
-            HUNGRELI
+          <div>
+            <img 
+              src={Logo} 
+              alt="Logo" 
+              className="h-12 w-auto object-contain" // Added fixed height and proper object fitting
+            />
           </div>
 
           {/* Desktop Navigation */}
