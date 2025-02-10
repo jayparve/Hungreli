@@ -1,10 +1,16 @@
 import React from 'react';
+import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 
 const Footer = () => {
   const navLinks = [
     { text: 'Home', href: '#' },
-    { text: 'Why Hungreli', href: '#' },
-    { text: 'Partner With Us', href: '#' }
+    { text: 'Restaurant Partner', href: '#' },
+    { text: 'Delivery Partner', href: '#' }
+  ];
+
+  const socialLinks = [
+    { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/hungreli.india?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
   ];
 
   return (
@@ -22,8 +28,24 @@ const Footer = () => {
             <button className="bg-amber-400 text-gray-900 px-4 sm:px-5 py-2 sm:py-2.5 rounded-md sm:rounded-lg 
               font-semibold text-xs sm:text-sm hover:bg-amber-500 transition-all duration-300 
               hover:shadow-lg w-fit tracking-wide uppercase">
-              Get Notified!
+              contact us
             </button>
+            {/* Social Icons */}
+            <div className="flex gap-4 mt-4">
+              {socialLinks.map((social, index) => {
+                const IconComponent = social.icon;
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="text-gray-300 hover:text-amber-400 transition-all duration-300"
+                  >
+                    <IconComponent size={20} />
+                  </a>
+                );
+              })}
+            </div>
           </div>
 
           {/* Navigation Links */}
