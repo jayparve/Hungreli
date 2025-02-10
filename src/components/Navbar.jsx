@@ -9,9 +9,9 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { href: "#", text: "Home" },
+    { href: "/", text: "Home" },
     { href: "https://docs.google.com/forms/d/e/1FAIpQLScY9r9RXtoKT54dvIYZbGUCVNAtbNg99uXBahlcEfKuYcP1bw/viewform", text: "Restaurant Partner" },
-    { href: "https://docs.google.com/forms/d/e/1FAIpQLSdT4I38XByy4_tkkLD-qHkEyjArbq0mvDSnFlLXoARRvkr5cQ/viewform", text: "Delvery Partner" },
+    { href: "https://docs.google.com/forms/d/e/1FAIpQLSdT4I38XByy4_tkkLD-qHkEyjArbq0mvDSnFlLXoARRvkr5cQ/viewform", text: "Delivery Partner" },
   ];
 
   return (
@@ -43,7 +43,7 @@ const Navbar = () => {
               hover:bg-orange-700 hover:scale-105 hover:shadow-lg
               active:scale-95 active:bg-orange-800
               focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900">
-              contact us
+              Contact us
             </button>
           </div>
 
@@ -76,7 +76,7 @@ const Navbar = () => {
                 active:scale-95 active:bg-orange-800
                 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900
                 w-full">
-                contact us
+                Contact us
               </button>
             </div>
           </div>

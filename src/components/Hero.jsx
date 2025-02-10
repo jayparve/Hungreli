@@ -8,7 +8,7 @@ const Hero = () => {
   const NotifyButton = () => (
       <a href="https://play.google.com/store/apps/details?id=com.hungreli">
     <button className="bg-[#519A6F] text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-colors w-full sm:w-auto text-lg font-medium tracking-wide cursor-pointer">
-      dowload the app
+      Dowload the app
     </button>
       </a>
   );
