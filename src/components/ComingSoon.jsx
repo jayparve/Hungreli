@@ -132,20 +132,26 @@ const ScrollTriggered = () => {
 
       {/* App store buttons with highest z-index */}
       <div className="flex flex-row  gap-4 mt-11 justify-center relative z-20">
-        <a href="#" className="inline-block">
+        <a href="https://play.google.com/store/apps/details?id=com.hungreli" className="inline-block">
           <img
             src={getplaystore}  
             alt="Get it on Google Play"
             className="h-8 w-auto md:h-16 lg:h-16"
           />
         </a>
-        <a href="#" className="inline-block">
-          <img
-            src={appstore}
-            alt="Download on the App Store"
-            className="h-8 w-auto md:h-16 lg:h-16"
-          />
-        </a>
+        <div className="relative inline-block">
+      <a href="#" className="block">
+        <img
+          src={appstore}
+          alt="Download on the App Store"
+          className="h-8 w-auto md:h-16 lg:h-16"
+        />
+      </a>
+      {/* <span className="bg-black/70 text-white text-sm md:text-base 
+                     font-medium px-12 py-3 rounded-full">
+        Coming Soon
+      </span> */}
+    </div>
       </div>
     </div>
   );
