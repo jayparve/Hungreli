@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import Logo from '../assets/logo.png';
+import Logo from '../assets/White-Hungreli-Logo.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +24,7 @@ const Navbar = () => {
             <img 
               src={Logo} 
               alt="Logo" 
-              className="h-12 w-auto object-contain" // Added fixed height and proper object fitting
+              className="h-8 w-auto object-contain" // Added fixed height and proper object fitting
             />
           </div>
 

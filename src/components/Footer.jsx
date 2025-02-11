@@ -1,6 +1,8 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 
+import Logo from '../assets/White-Hungreli-Logo.png';
+
 const Footer = () => {
   const navLinks = [
     { text: 'Home', href: '#' },
@@ -19,9 +21,7 @@ const Footer = () => {
         <div className="flex flex-col space-y-6 sm:space-y-8 lg:space-y-0 lg:flex-row justify-between items-start lg:items-center">
           {/* Brand Section */}
           <div className="flex flex-col gap-2 sm:gap-3 md:gap-4">
-            <h2 className="text-white text-xl sm:text-2xl font-extrabold tracking-wide uppercase">
-              Hungreli
-            </h2>
+            <img src={Logo}  alt="" className='h-8 w-48' />
             <p className="text-gray-300 text-xs sm:text-sm font-medium tracking-wide leading-relaxed">
               Beat the Hunger Stay Hungreli!
             </p>
