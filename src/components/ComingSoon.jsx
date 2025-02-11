@@ -1,104 +1,169 @@
 import React from "react";
-import bgimg from "../assets/bgimg.png";
-import biryani from "../assets/biryani.png";
-import milkshake from "../assets/milkshake.png";
-import phoneimg from "../assets/phone.png";
-import playStoreIcon from "../assets/playstore.png";
-import appStoreIcon from "../assets/appstore.png";
+import { motion } from "framer-motion";
+import phoneimg from '../assets/phone.png'
+import bgimg from '../assets/bgimg.png'
+import getplaystore from '../assets/getplaystore.png'
+import appstore from '../assets/getappstore.svg'
 
-const ComingSoon = () => {
-  // Replace with your actual Play Store URL
-  const playStoreUrl = "https://play.google.com/store/apps/details?id=com.hungreli";
+import food5 from '../assets/food5.png'
+import food6 from '../assets/food6.png'
+
+const ScrollTriggered = () => {
+  const foodAnimationVariants = {
+    popUp: {
+      hidden: { opacity: 0, scale: 0, y: 50 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: {
+          duration: 0.6,
+          ease: "easeOut"
+        }
+      }
+    },
+    slideIn: {
+      hidden: { opacity: 0, x: -100 },
+      visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+          duration: 0.8,
+          ease: "easeOut"
+        }
+      }
+    },
+    rotateIn: {
+      hidden: { opacity: 0, rotate: -180, scale: 0 },
+      visible: {
+        opacity: 1,
+        rotate: 0,
+        scale: 1,
+        transition: {
+          duration: 0.8,
+          ease: "easeOut"
+        }
+      }
+    }
+  };
+
+  const foodImages = [
+    // Left side food image
+   
+   
+    {
+      position: "bottom-36 left-10 md:bottom-44 md:left-24 lg:bottom-44 lg:left-24",
+      size: "w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40",
+      animation: "rotateIn",
+      delay: 0.6,
+      image: food6
+    },
+    // Right side food image
+    {
+      position: "top-64 right-2  md:top-24 md:right-10 lg:top-14 lg:right-40",
+      size: "w-24 h-24 md:w-48 md:h-48 lg:w-56 lg:h-56",
+      animation: "popUp",
+      delay: 0.3,
+      image: food5
+    },
+   
+ 
+    // Additional floating images
+   
+  
+  ];
+
+  const floatingAnimation = {
+    y: [-10, 10],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut"
+    }
+  };
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto px-4 my-8 md:my-16 lg:my-28">
-      <div className="relative min-h-76 md:h-3/5 lg:h-2/3">
-        {/* Background Image - Orange curved rectangle */}
-        <div className="absolute inset-0">
-          <img 
-            src={bgimg} 
-            alt="" 
-            className="w-full h-full object-cover rounded-3xl"
+    <div className="mx-auto max-w-6xl w-full pb-24 mt-2 relative">
+      {/* Background section with lower z-index */}
+      <motion.div
+        className="overflow-hidden flex justify-center items-center relative z-0"
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ amount: 0.8 }}
+      >
+        <div className="absolute w-full mt-80 md:mt-64 lg:mt-64">
+          <img src={bgimg} alt="Background" className="w-full px-4"/>
+        </div>
+        
+        {/* Phone with higher z-index than background but lower than food */}
+        <motion.div
+          className="w-[300px] h-[430px] flex justify-center items-center rounded-2xl relative z-10"
+          style={{ transformOrigin: "10% 60%" }}
+          variants={cardVariants}
+        >
+          <img src={phoneimg} alt="Phone" className="w-24 h-48 md:w-44 md:h-84 lg:w-48 lg:h-88" />
+        </motion.div>
+      </motion.div>
+
+      {/* Food images with highest z-index */}
+      <div className="absolute inset-0 z-20">
+        {foodImages.map((item, index) => (
+          <motion.div
+            key={index}
+            className={`absolute ${item.position} ${item.size}`}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            variants={foodAnimationVariants[item.animation]}
+            whileHover={{ scale: 1.1 }}
+            animate={floatingAnimation}
+            transition={{ delay: item.delay }}
+          >
+            <img 
+              // src={`/api/placeholder/${item.size.split('w-')[1]}/${item.size.split('h-')[1]}`}
+              src={item.image}
+              alt={`Food item ${index + 1}`}
+              className={`${item.size} rounded-full object-cover`}
+            />
+          </motion.div>
+        ))}
+      </div>
+
+      {/* App store buttons with highest z-index */}
+      <div className="flex flex-row  gap-4 mt-11 justify-center relative z-20">
+        <a href="#" className="inline-block">
+          <img
+            src={getplaystore}  
+            alt="Get it on Google Play"
+            className="h-8 w-auto md:h-16 lg:h-16"
           />
-        </div>
-
-        {/* Content Container */}
-        <div className="relative z-10 h-full">
-          {/* Text and Phone Container */}
-          <div className="flex items-center h-full pt-8">
-            {/* Left Side with Phone */}
-            <div className="relative ml-4 md:ml-8 lg:ml-24">
-              <img  
-                src={phoneimg}
-                alt="Hungreli App"
-                className="w-48 md:w-56 lg:w-68 h-auto [filter:drop-shadow(0_20px_20px_rgba(0,0,0,0.3))_drop-shadow(0_35px_35px_rgba(0,0,0,0.20))_drop-shadow(0_50px_65px_rgba(0,0,0,0.19))]"
-              />
-            </div>
-
-            {/* Right Side with Text */}
-            <div className="text-white ml-4 md:ml-6 lg:ml-8">
-              <h2 className="text2xl md:text-5xl lg:text-6xl font-bold mb-1 drop-shadow-lg">
-                Get Started Now
-              </h2>
-              <p className="text-xl md:text-2xl opacity-80">Download the App</p>
-            </div>
-          </div>
-
-          {/* Store Icons Container - Positioned at bottom */}
-          <div className="absolute bottom-0 left-1/2 md:left-1/3 lg:left-1/3  -translate-x-1/24 flex gap-3 md:gap-6 lg:gap-8">
-            {/* Play Store Button */}
-            <a 
-              href={playStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white rounded-t-full w-14 h-14 md:w-28 md:h-28 lg:w-28 lg:h-28 flex items-center justify-center pt-4 hover:bg-gray-100 transition-colors cursor-pointer ml-8 md:ml-20 lg:ml-0"
-            >
-              <img
-                src={playStoreIcon}
-                alt="Get it on Play Store"
-                className="w-12 h-12 md:w-20 md:h-20 lg:w-20 lg:h-20 object-contain p-1 pl-2 mb-4"
-              />
-            </a>
-            
-            {/* App Store Coming Soon */}
-            <div className="relative">
-              <div className="bg-white/80 rounded-t-full w-14 h-14 md:w-28 md:h-28 lg:w-28 lg:h-28 flex items-center justify-center pt-4">
-                <img
-                  src={appStoreIcon}
-                  alt="App Store"
-                  className="w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain opacity-50 mb-4"
-                />
-              </div>
-              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-white text-xs md:text:sm lg:text-sm font-medium bg-black/50 px-2 md:px-3 lg:px-3 py-1 rounded-full whitespace-nowrap">
-                Coming Soon
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Floating Food Images */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Biryani Image */}
-          <div className="absolute top-0 right-0 md:-top-20 lg:-top-40 md:-right-8 lg:-right-16">
-            <img
-              src={biryani}
-              alt="Biryani"
-              className="hidden lg:block w-64 md:w-80 lg:w-76 h-auto object-contain z-20 transform -rotate-12 -skew-x-6 hover:scale-105 transition-transform drop-shadow-2xl"
-            />
-          </div>
-
-          {/* Milkshake Image */}
-          <div className="absolute bottom-0 right-0 md:-bottom-8 lg:-bottom-16 md:right-24 lg:right-32">
-            <img
-              src={milkshake}
-              alt="Bubble Tea"
-              className="hidden lg:block w-32 md:w-36 lg:w-44 h-auto object-contain z-20 -rotate-12 transform drop-shadow-2xl"
-            />
-          </div>
-        </div>
+        </a>
+        <a href="#" className="inline-block">
+          <img
+            src={appstore}
+            alt="Download on the App Store"
+            className="h-8 w-auto md:h-16 lg:h-16"
+          />
+        </a>
       </div>
     </div>
   );
 };
 
-export default ComingSoon;
+const cardVariants = {
+  offscreen: {
+    y: 300,
+  },
+  onscreen: {
+    y: 50,
+    rotate: -10,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+
+export default ScrollTriggered;
