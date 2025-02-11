@@ -24,12 +24,12 @@ const Navbar = () => {
             <img 
               src={Logo} 
               alt="Logo" 
-              className="h-8 w-auto object-contain" // Added fixed height and proper object fitting
+              className="h-4 w-auto md:h-6 lg:h-8 object-contain"
             />
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation (lg screens) */}
+          <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.text}
@@ -41,8 +41,8 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Contact Button (Desktop) */}
-          <div className="hidden md:block">
+          {/* Contact Button (lg screens) */}
+          <div className="hidden lg:block">
             <button className="bg-orange-600 text-white px-6 py-2 rounded-lg font-medium 
               transform transition-all duration-300 ease-in-out
               hover:bg-orange-700 hover:scale-105 hover:shadow-lg
@@ -52,19 +52,19 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button (sm and md screens) */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-white hover:text-gray-300 transition-colors duration-200"
+            className="lg:hidden text-white hover:text-gray-300 transition-colors duration-200"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu (sm and md screens) */}
         {isMenuOpen && (
-          <div className="md:hidden mt-6">
+          <div className="lg:hidden mt-6">
             <div className="flex flex-col space-y-5 py-5">
               {navLinks.map((link) => (
                 <a
